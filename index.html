@@ -92,7 +92,7 @@
 		}
 	</script>
 	<script defer> setTimeout(() => { window.scrollTo({ top: 0 }) }, 500) </script>
-  <script type="module" crossorigin src="/assets/index-cd3f531a.js"></script>
+  <script type="module" crossorigin src="/assets/index-e08f2909.js"></script>
   <link rel="stylesheet" href="/assets/index-8e20a9e3.css">
 </head>
 
@@ -327,7 +327,7 @@
 									:placeholder='$t("settings.settings.resources.customResourceLinkPlaceholder")'
 									:style="{display: gameConfig.resourcesType==='pt-custom'?'inline-block':'none'}"
 									v-model="gameConfig.customResourceLink">
-								<input type="button" onclick="loadCustomRes"
+								<input type="button" @click="loadCustomRes"
 									v-if="gameConfig.resourcesType==='pt-custom'" :value='$t("settings.settings.resources.loadResButton")'>
 								<br />
 								<input id="input-offset" type="number" step="5" class="input textInput" style="display:none;"
