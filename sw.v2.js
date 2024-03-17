@@ -96,7 +96,7 @@ self.addEventListener("fetch", async function (e) {
       }
       e.respondWith(cacheOrOnline(e.request, cacheStorageKey + "Charts"));
       return;
-    } else if (urlParsed.host === "ptc.realtvop.eu.org" || urlParsed.host === "chart.phitogether.fun") {
+    } else if (urlParsed.host.endsWith("ptc.realtvop.eu.org") || urlParsed.host === "chart.phitogether.fun") {
       // PhiTogether Community
       if (!urlParsed.path.includes("songs.json") && !urlParsed.path.includes("chapters.json")) e.respondWith(cacheFirst(e.request, cacheStorageKey + "Charts"));
       return;

@@ -92,7 +92,7 @@
 		}
 	</script>
 	<script defer> setTimeout(() => { window.scrollTo({ top: 0 }) }, 500) </script>
-  <script type="module" crossorigin src="/assets/index-52f609dc.js"></script>
+  <script type="module" crossorigin src="/assets/index-03c7b8ff.js"></script>
   <link rel="stylesheet" href="/assets/index-8e20a9e3.css">
 </head>
 
@@ -230,6 +230,8 @@
 										v-model="gameConfig.enhanceRankVis"><label
 										for="enhanceRankVis">{{ $t("settings.settings.display.enhanceRankVis") }}</label></div>
 								<br />
+								<div><input type="checkbox" id="enableLife" v-model="gameConfig.enableLife"><label
+									for="enableLife">{{ $t("settings.settings.display.enableLife") }}</label></div>
 								<div><input type="checkbox" id="enableFilter" v-model="gameConfig.enableFilter"><label
 										for="enableFilter">{{ $t("settings.settings.display.enableFilter") }}</label></div><br />
 								<div :style="{display:gameConfig.enableFilter?'block':'none'}"><textarea
