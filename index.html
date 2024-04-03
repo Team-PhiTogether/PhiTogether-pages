@@ -67,6 +67,162 @@
 						"你们要的判定线不动",
 						"出 bug 了，一直没法创建多人游戏房间，这是怎么会事呢"
 					],
+				},
+				aprfool2024: {
+					get activate() {
+						const dateNow = new Date().getTime();
+						return (
+							dateNow >= new Date("2024/04/01 00:00:00").getTime()
+							&& 
+							dateNow <= new Date("2024/04/07 23:59:59").getTime()
+						);
+					},
+					status: {
+						rtPlayed: false,
+					},
+					songList: {
+/* 						"rt": {
+							info: {
+								id: "24aprflxtrack01",
+								title: "BPM=RT",
+								composer: "Camellia",
+								illustrator: "Camellia",
+								level: "SP",
+								difficulty: "?",
+								ranked: false,
+							},
+							files: {
+								chart: "/src/core/charts/24AprFl/rt/chart.json",
+								song: "/src/core/charts/24AprFl/rt/song.mp3",
+								illustration: "/src/core/charts/24AprFl/rt/illustration.jpg",
+							}
+						},
+						"2024": {
+							info: {
+								id: "24aprflxtrack02",
+								title: "Hello (BPM) 2024",
+								composer: "かめりあ",
+								illustrator: "Camellia",
+								charter: "a \"giFT\" from 2023 to 2024",
+								level: "SP",
+								difficulty: "?",
+								ranked: false,
+							},
+							files: {
+								chart: "/src/core/charts/24AprFl/2024/chart.json",
+								song: "/src/core/charts/24AprFl/2024/song.mp3",
+								illustration: "/src/core/charts/24AprFl/2024/illustration.jpg",
+							}
+						} */
+						"rt": {
+							chart: "https://ptc.realtvop.top/song/r55828450/55828450.json",
+							unlockVideo: null,
+							charter: "o1b",
+							difficulty: "?",
+							id: "r55828450",
+							level: "SP",
+							notes: "0",
+							ranked: false,
+							selected: true,
+							song: "r55828450",
+							userScore: [
+								[
+									"NEW",
+									"gray",
+									"15px",
+									0.6
+								], 
+								"0000000", 
+								"0.00%"
+							]
+						},
+						"2024": {
+								chart: "https://ptc.realtvop.top/song/r55828450/55828450.json",
+								unlockVideo: null,
+								charter: "o1b",
+								difficulty: "?",
+								id: "r60287348",
+								level: "SP",
+								notes: "0",
+								ranked: false,
+								selected: true,
+								song: "r60287348",
+								userScore: [
+								[
+									"NEW",
+									"gray",
+									"15px",
+									0.6
+								], 
+								"0000000", 
+								"0.00%"
+							]
+						}
+					},
+					hook(search, loadChart) {
+						if (
+								search.name
+                && this.activate
+                && search.name.includes("2024")
+                && this.status.rtPlayed
+            ) {
+								console.log("flag 2024 activated");
+                this.payload("2024", loadChart);
+                return true;
+            } else return false;
+					},
+					hookCheckRT(id) {
+						if (id == "r55828450") this.status.rtPlayed = true;
+						else if (id == "r60287348") {
+							if (!this.status.rtPlayed) {
+								console.log(id);
+								shared.game.msgHandler.warning(`SO?G NOT D?CRY?TED Y?T BPM =【数据丢失】`);
+								return true;
+							}
+						}
+						return false;
+					},
+					async payload(item, loadChart) {
+						const chartObj = this.songList[item];
+						loadChart(chartObj);
+/* 						shared.game.ptmain.loadChart(
+							{
+								composer: chartObj.info.composer,
+								id: chartObj.info.id,
+								illustration: chartObj.files.illustration,
+								illustrator: chartObj.info.illustrator,
+								isFromPhiZone: false,
+								isFromURL: true,
+								name: chartObj.info.title,
+								origin: null,
+								song: chartObj.files.song,
+							}, 
+							{
+								assetsNum: 0,
+								chart: chartObj.files.chart,
+								charter: chartObj.info.charter,
+								difficulty: chartObj.info.difficulty,
+								id: chartObj.info.id,
+								isFromPhiZone: false,
+								isFromURL: true,
+								level: chartObj.info.level,
+								origin: null,
+								selected: false,
+								song: chartObj.files.song,
+								userScore: [
+									[
+										"NEW",
+										"gray",
+										"15px",
+										0.6
+									],
+									"0000000",
+									"0.00%"
+								]
+							},
+							songLoadedCallback
+						) */
+					}
 				}
 			},
 			filter: {
@@ -91,8 +247,10 @@
 			gtag('config', 'G-NVFVE35LMW');
 		}
 	</script>
-	<script defer> setTimeout(() => { window.scrollTo({ top: 0 }) }, 500) </script>
-  <script type="module" crossorigin src="/assets/index-1e852cf6.js"></script>
+	<script defer> 
+		setTimeout(() => { window.scrollTo({ top: 0 }) }, 500);
+	</script>
+  <script type="module" crossorigin src="/assets/index-6c1bae8e.js"></script>
   <link rel="stylesheet" href="/assets/index-8e20a9e3.css">
 </head>
 
